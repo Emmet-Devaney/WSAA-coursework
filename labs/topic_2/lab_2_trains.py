@@ -8,8 +8,6 @@ doc = parseString(page. content)
 # check it works
 print (doc. toprettyxml()) #output to console comment this out once you know it works
 
-print("HTTP Status Code:", page.status_code) 
-
 # if I want to store the xml in a file. You can comment this out later
 with open("trainxml.xml","w") as xmlfp:
     doc.writexml(xmlfp)
@@ -23,4 +21,19 @@ for objTrainPositionsNode in objTrainPositionsNodes:
     trainlatitudenode = objTrainPositionsNode.getElementsByTagName("TrainLatitude").item(0)
     trainlatitude = trainlatitudenode.firstChild.nodeValue.strip()
     print (trainlatitude)
+
+with open('week03_train.csv', mode='w', newline='') as train_file:
+    train_writer = csv.writer(train_file, delimiter='\t', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+    
+    objTrainPositionsNodes = doc.getElementsByTagName("objTrainPositions")
+    for objTrainPositionsNode in objTrainPositionsNodes:
+        traincodenode = objTrainPositionsNode.getElementsByTagName("TrainCode").item(0)
+        traincode = traincodenode.firstChild.nodeValue.strip()
+      
+        print(traincode)
+        
+        dataList = []
+        dataList.append(traincode)
+        train_writer.writerow(dataList)
+
 
