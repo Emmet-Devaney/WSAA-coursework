@@ -15,3 +15,12 @@ with open("trainxml.xml","w") as xmlfp:
     doc.writexml(xmlfp)
 
 
+objTrainPositionsNodes = doc.getElementsByTagName("objTrainPositions")
+for objTrainPositionsNode in objTrainPositionsNodes:
+    #traincodenode = objTrainPositionsNode.getElementsByTagName("TrainCode").item(0)
+    #traincode = traincodenode.firstChild.nodeValue.strip()
+    #print (traincode)
+    trainlatitudenode = objTrainPositionsNode.getElementsByTagName("TrainLatitude").item(0)
+    trainlatitude = trainlatitudenode.firstChild.nodeValue.strip()
+    print (trainlatitude)
+
