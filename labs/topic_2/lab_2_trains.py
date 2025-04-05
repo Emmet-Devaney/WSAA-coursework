@@ -12,7 +12,7 @@ print (doc. toprettyxml()) #output to console comment this out once you know it 
 with open("trainxml.xml","w") as xmlfp:
     doc.writexml(xmlfp)
 
-
+'''
 objTrainPositionsNodes = doc.getElementsByTagName("objTrainPositions")
 for objTrainPositionsNode in objTrainPositionsNodes:
     #traincodenode = objTrainPositionsNode.getElementsByTagName("TrainCode").item(0)
@@ -21,6 +21,7 @@ for objTrainPositionsNode in objTrainPositionsNodes:
     trainlatitudenode = objTrainPositionsNode.getElementsByTagName("TrainLatitude").item(0)
     trainlatitude = trainlatitudenode.firstChild.nodeValue.strip()
     print (trainlatitude)
+'''
 
 with open('week03_train.csv', mode='w', newline='') as train_file:
     train_writer = csv.writer(train_file, delimiter='\t', quotechar='"', quoting=csv.QUOTE_MINIMAL)
@@ -37,3 +38,22 @@ with open('week03_train.csv', mode='w', newline='') as train_file:
         train_writer.writerow(dataList)
 
 
+retrieveTags = ['TrainStatus',
+                'TrainLatitude',
+                'TrainLongitude',
+                'TrainCode',
+                'TrainDate',
+                'PublicMessage',
+                'Direction']
+
+
+
+with open('week03_train.csv', mode='w', newline='') as train_file:
+    train_writer = csv.writer(train_file, delimiter='\t', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+    objTrainPositionsNodes = doc.getElementsByTagName("objTrainPositions")
+    for objTrainPositionsNode in objTrainPositionsNodes:
+        dataList = []
+        for retrieveTag in retrieveTags:
+            datanode = objTrainPositionsNode.getElementsByTagName(retrieveTag).item(0)
+
+        train_writer.writerow(dataList)
