@@ -47,7 +47,7 @@ retrieveTags = ['TrainStatus',
                 'Direction']
 
 
-
+'''
 with open('week03_train.csv', mode='w', newline='') as train_file:
     train_writer = csv.writer(train_file, delimiter='\t', quotechar='"', quoting=csv.QUOTE_MINIMAL)
     objTrainPositionsNodes = doc.getElementsByTagName("objTrainPositions")
@@ -56,4 +56,26 @@ with open('week03_train.csv', mode='w', newline='') as train_file:
         for retrieveTag in retrieveTags:
             datanode = objTrainPositionsNode.getElementsByTagName(retrieveTag).item(0)
 
+        train_writer.writerow(dataList)
+'''
+
+with open('week03_train_filtered.csv', mode='w', newline='') as train_file:
+    train_writer = csv.writer(train_file, delimiter='\t', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+    objTrainPositionsNodes = doc.getElementsByTagName("objTrainPositions")
+    for objTrainPositionsNode in objTrainPositionsNodes:
+        # extract TrainCode first
+        traincodenode = objTrainPositionsNode.getElementsByTagName("TrainCode").item(0)
+        traincode = traincodenode.firstChild.nodeValue.strip()
+        # Filter for TrainCode starting with "D"
+        if not traincode.startswith("D"):
+            continue
+        
+        dataList = []
+        for retrieveTag in retrieveTags:
+            datanode = objTrainPositionsNode.getElementsByTagName(retrieveTag).item(0)
+            #avoid errors if a tag is missing
+            if datanode and datanode.firstChild:
+                dataList.append(datanode.firstChild.nodeValue.strip())
+            else:
+                dataList.append("N/A")
         train_writer.writerow(dataList)

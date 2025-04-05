@@ -1,0 +1,8 @@
+N	51.9018	-8.4582	D541	05 Apr 2025	D541\nCork to Cobh\nExpected Departure 23:00	To Cobh
+N	53.3464	-6.29461	D226	05 Apr 2025	D226\nDublin Heuston to Kildare\nExpected Departure 23:10	To Kildare
+R	0	0	D540	05 Apr 2025	D540\n22:30 - Mallow to Cork (0 mins late)\nDeparted Killarney Junction next stop Cork	To Cork
+R	53.163	-6.90802	D225	05 Apr 2025	D225\n22:10 - Dublin Heuston to Portlaoise (4 mins late)\nDeparted Kildare next stop Monasterevin	To Portlaoise
+R	53.3786	-6.19131	D831	05 Apr 2025	D831\n22:55 - Dublin Connolly to Dundalk (-1 mins late)\nDeparted Harmonstown next stop Howth Junction	Northbound
+T	53.378	-6.58993	D933	05 Apr 2025	D933\n22:17 - Dublin Connolly to Maynooth(-1 mins late)\nTERMINATED Maynooth at 22:58	Northbound
+T	53.4349	-6.46898	D346	05 Apr 2025	D346\n22:46 - Clonsilla to M3 Parkway(-1 mins late)\nTERMINATED M3 Parkway at 22:56	Northbound
+T	53.712	-6.33538	D829	05 Apr 2025	D829\n21:55 - Dublin Connolly to Drogheda(3 mins late)\nTERMINATED Drogheda at 23:02	Northbound
