@@ -1,8 +1,11 @@
 import requests 
 import json
 
-#shuffling a new deck
-shuffle_url = "https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1"
+
+#SPECIFIC CARDS = "https://deckofcardsapi.com/api/deck/new/shuffle/?cards=AS,2S,3S,4S,5S"
+#SHUFFLED DECK = "https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1"
+
+shuffle_url = "https://deckofcardsapi.com/api/deck/new/shuffle/?cards=AS,2S,2H,2C,2H,6S"
 response = requests.get(shuffle_url)
 
 #parse the JSON response
@@ -11,8 +14,8 @@ data = response.json()
 #identify each new deck
 deck_id = data['deck_id']
 
-print("Deck ID:", deck_id)
 
+print("Deck ID:", deck_id)
 
 
 #drawing 5 cards of the deck_id
@@ -60,7 +63,7 @@ for v in values:
 print("Value counts:", value_counts)
 
 
-#identify if there is a pair
+#identify if there is a: pair; triple; four of a kind
 has_pair = False
 has_triple = False
 has_quad = False
@@ -79,3 +82,19 @@ if has_triple:
     print("You have a triple")
 if has_quad:
     print("You have four of a kind")
+
+#identify if there is a straight
+sorted_values = sorted(numeric_values)
+is_straight = True
+for i in range(len(sorted_values) - 1):
+    if sorted_values[i] + 1 != sorted_values[i+1]:
+        is_straight = False
+        break
+
+if is_straight:
+    print("You have a straight")
+
+#identify if there is a flush (same suit)
+is_flush = (len(set(suits)) == 1)
+if is_flush:
+    print("You have a flush")
