@@ -62,10 +62,20 @@ print("Value counts:", value_counts)
 
 #identify if there is a pair
 has_pair = False
+has_triple = False
+has_quad = False
 
 for count in value_counts.values():
     if count == 2:
         has_pair = True
+    elif count == 3:
+        has_triple = True
+    elif count == 4:
+        has_quad = True
 
 if has_pair:
     print("You have a pair")
+if has_triple:
+    print("You have a triple")
+if has_quad:
+    print("You have four of a kind")
