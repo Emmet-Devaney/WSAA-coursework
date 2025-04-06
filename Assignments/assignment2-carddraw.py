@@ -5,7 +5,7 @@ import json
 #SPECIFIC CARDS = "https://deckofcardsapi.com/api/deck/new/shuffle/?cards=AS,2S,3S,4S,5S"
 #SHUFFLED DECK = "https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1"
 
-shuffle_url = "https://deckofcardsapi.com/api/deck/new/shuffle/?cards=AS,2S,2H,2C,2H,6S"
+shuffle_url = "https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1"
 response = requests.get(shuffle_url)
 
 #parse the JSON response
