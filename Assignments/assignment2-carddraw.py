@@ -25,3 +25,36 @@ cards = draw_data["cards"]
 print("Your cards:")
 for card in cards:
     print(f"{card['value']} of {card['suit']}")
+
+
+#Extract card values and suits
+values = [card["value"] for card in cards]
+suits = [card["suit"] for card in cards]
+
+#map each card value to a number
+value_map = {
+    "ACE": 1,
+    "2": 2,
+    "3": 3,
+    "4": 4,
+    "5": 5,
+    "6": 6,
+    "7": 7,
+    "8": 8,
+    "9": 9,
+    "10": 10,
+    "JACK": 11,
+    "QUEEN": 12,
+    "KING": 13
+}
+numeric_values = [value_map[v] for v in values]
+
+#Manually count occurrences of each card value
+value_counts = {}
+for v in values:
+    if v in value_counts:
+        value_counts[v] += 1
+    else:
+        value_counts[v] = 1
+
+print("Value counts:", value_counts)
