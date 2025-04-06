@@ -58,3 +58,14 @@ for v in values:
         value_counts[v] = 1
 
 print("Value counts:", value_counts)
+
+
+#identify if there is a pair
+has_pair = False
+
+for count in value_counts.values():
+    if count == 2:
+        has_pair = True
+
+if has_pair:
+    print("You have a pair")
