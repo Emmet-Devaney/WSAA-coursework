@@ -21,12 +21,18 @@ def createbook(book):
 
     return response.json()
 
+#not working
 def updatebook(id, bookdiff):
     puturl = url + "/" + str(id)
     response = requests.put(puturl, json=bookdiff)
     return response.json()
     pass
 
+
+def deletebook(id):
+    deleteurl = url + "/" + str(id)
+    response = requests.delete(deleteurl)
+    return response.json()
 
 
 if __name__ == "__main__":
@@ -39,7 +45,9 @@ if __name__ == "__main__":
     bookdiff= {
         'price': 555
     }
+
     #print(readbooks())
     #print(readbooks(1552))
     #print(createbook(book))
-    print(updatebook(55, bookdiff))
+    #print(updatebook(55, bookdiff))
+    print(deletebook(99))
