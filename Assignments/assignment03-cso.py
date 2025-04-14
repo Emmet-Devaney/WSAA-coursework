@@ -7,7 +7,10 @@ response = requests.get(url)
 
 data = response.json()
 
+# Save the JSON data to a file called "cso.json"
 if response.status_code == 200:    
-    print("ok")
+    with open("cso.json", "w") as file:
+            json.dump(data, file)
+
 else:
     print(f'Failed to retrieve data: {response.status_code}')
